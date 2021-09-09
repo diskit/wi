@@ -3,11 +3,15 @@ import { ref } from 'vue'
 
 defineProps<{ msg: string }>()
 
+const onMessageClicked = (e: Event) => {
+  console.log('handle in vue', e)
+}
+
 const count = ref(0)
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
+  <x-message :message="msg" @clickMessage="onMessageClicked"></x-message>
 
   <p>
     Recommended IDE setup:
@@ -48,5 +52,12 @@ code {
   padding: 2px 4px;
   border-radius: 4px;
   color: #304455;
+}
+
+x-message {
+  color: #00f;
+  font-size: 24px;
+  font-weight: bold;
+  --base-color: #f00;
 }
 </style>
